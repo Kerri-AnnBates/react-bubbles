@@ -6,7 +6,6 @@ const Login = (props) => {
     username: '',
     password: ''
   });
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleChange = (e) => {
     setUserCreds({
@@ -14,10 +13,10 @@ const Login = (props) => {
       [e.target.name]: e.target.value
     })
   }
-
   
   const handleLogin = (e) => {
     e.preventDefault();
+    
     axios.post('http://localhost:5000/api/login', userCreds)
       .then(res => {
         localStorage.setItem('token', res.data.token)
