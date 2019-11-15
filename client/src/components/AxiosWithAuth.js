@@ -8,6 +8,6 @@ export default function AxiosWithAuth() {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `${token}`,
-        }
+        },
     });
 }
