@@ -6,6 +6,7 @@ import "./styles.scss";
 
 import PrivateFoute from './components/PrivateRoute';
 import BubblePage from './components/BubblePage';
+import ColorList from "./components/ColorList";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="App">
         <Route exact path="/" component={Login} />
         <PrivateFoute path="/bubble" component={BubblePage} />
+        {/* <PrivateFoute path="/bubble/:id" component={ColorList} /> */}
       </div>
     </Router>
   );
