@@ -6,6 +6,7 @@ const Login = (props) => {
     username: '',
     password: ''
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleChange = (e) => {
     setUserCreds({
@@ -17,13 +18,16 @@ const Login = (props) => {
   
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/', userCreds)
+    axios.post('http://localhost:5000/api/login', userCreds)
       .then(res => {
         localStorage.setItem('token', res.data.token)
         props.history.push('/bubble');
       })
       .catch(err => {
-        console.log(err)
+        console.log(err.message)
+        if (err.message === 'Request failed with status code 403') {
+          alert('Login failed');
+        } 
       })
   }
 
